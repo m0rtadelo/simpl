@@ -6,7 +6,7 @@ function logic() {
             this.add();
     }
     this.add = function () {
-        const input = simpl.getElement(this, 'name')
+        const input = simpl.getElementById(this, 'name')
         if (input.value.length > 0) {
             var td = document.createElement('app-list');
             td.setAttribute('title', input.value)
@@ -21,7 +21,7 @@ function logic() {
     }
     this.clean = function(){
         document.getElementById('todoContainer').innerHTML = ''
-        simpl.getElement(this, 'name').focus();
+        simpl.getElementById(this, 'name').focus();
     }
 }
 

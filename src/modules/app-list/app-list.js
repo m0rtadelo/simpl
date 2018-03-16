@@ -8,11 +8,17 @@ function logic() {
     this.btClose = function(){
         simpl.remove(this.Module.dom)
     }
+    this.itemClick = function(item){
+        if(item.target.checked)
+            item.target.parentNode.style.textDecoration="line-through"
+        else
+            item.target.parentNode.style.textDecoration=""
+    }
     this.btClick = function () {
 
         // Linking dom elements of this module
-        var input = simpl.getElement(this, 'txtItem')
-        var list = simpl.getElement(this, 'list')
+        var input = simpl.getElementById(this, 'txtItem')
+        var list = simpl.getElementById(this, 'list')
 
         if(input.value.length==0){
             alert("You must enter a value!")
@@ -35,8 +41,8 @@ function logic() {
     }
     this.onLoad = function () {
         simpl.log.info(`${this.Module.type}(${this.Module.id}) loaded.`)
-        simpl.getElement(this, 'txtItem').focus();
-        simpl.getElement(this,'title').appendChild(document.createTextNode(this.Module.attributes['title'].value));
+        simpl.getElementById(this, 'txtItem').focus();
+        simpl.getElementById(this,'title').appendChild(document.createTextNode(this.Module.attributes['title'].value));
     }
     this.events = [
         //{ 'event': 'click', 'id': 'button', 'action': this.btClick },  <- Added with html method

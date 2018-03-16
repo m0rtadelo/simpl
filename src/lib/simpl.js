@@ -11,7 +11,7 @@ const ux = require('./simpl-ux')
 const moduleHelper = {
     log: log,
     Modules: Modules,
-    getElement: function (module, id) {
+    getElementById: function (module, id) {
         try {
             if (module.Module)
                 return this.getById(module.Module.dom, id)
