@@ -11,12 +11,15 @@ const ux = require('./simpl-ux')
 const moduleHelper = {
     log: log,
     Modules: Modules,
+    getModule: function(module){
+        return module.__Module
+    },
     getElementById: function (module, id) {
         try {
-            if (module.Module)
-                return this.getById(module.Module.dom, id)
+            if (module.__Module)
+                return this.querySelectorAll(module.__Module.dom, '#' + id)[0]
         } catch (error) {
-            log.error("[getElement] " + error)
+            log.error("[getElementById] " + error)
         }
     },
     render: function (element) {
@@ -26,8 +29,8 @@ const moduleHelper = {
             log.error("[render] " + error)
         }
     },
-    getById: function (root, id) {
-        return root.querySelectorAll('#' + id)[0];
+    querySelectorAll: function (root, id) {
+        return root.querySelectorAll(id);
     },
     remove: function (element) {
         try {
@@ -86,7 +89,7 @@ const simpl = {
         Module.id = Modules.loadedCount()
         Module.attributes = element.attributes
         Module.dom = element
-        Module.js.Module = Module
+        Module.js.__Module = Module
         Modules.add(Module)
 
         // injecting HTML code into DOM module
@@ -150,17 +153,16 @@ const library = {
     init: async function (availableModules) {
         log.info("init started, loading modules...")
         if (availableModules != undefined && availableModules.length > 0) {
-            //ux.disable()
-            window.simpl = moduleHelper
+            ux.disable()
             Modules.available = availableModules
             log.info(`${availableModules} available, iterating DOM and injecting modules...`)
             await simpl.iterateHTML(document.querySelectorAll(Modules.list()))
-            //ux.enable()
+            ux.enable()
         } else {
             log.warn("You must pass an argument with available Modules. Example: simpl.init(['app-tasklist','app-main'])")
         }
         log.info("init finished")
         console.log(Modules)
-    }, getHelper: function () { return moduleHelper }
+    }, simpl: moduleHelper 
 }
 module.exports = library

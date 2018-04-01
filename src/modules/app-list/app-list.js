@@ -1,4 +1,5 @@
 'use strict';
+const simpl = require('../../lib/simpl').simpl;
 
 function logic() {
     this.KeyPress = function(event){
@@ -40,9 +41,9 @@ function logic() {
         input.focus();
     }
     this.onLoad = function () {
-        simpl.log.info(`${this.Module.type}(${this.Module.id}) loaded.`)
+        simpl.log.info(`${simpl.getModule(this).type}(${simpl.getModule(this).id}) loaded.`)
         simpl.getElementById(this, 'txtItem').focus();
-        simpl.getElementById(this,'title').appendChild(document.createTextNode(this.Module.attributes['title'].value));
+        simpl.getElementById(this,'title').appendChild(document.createTextNode(simpl.getModule(this).attributes['title'].value));
     }
     this.events = [
         //{ 'event': 'click', 'id': 'button', 'action': this.btClick },  <- Added with html method
