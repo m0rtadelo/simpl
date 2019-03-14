@@ -32,7 +32,8 @@ const moduleHelper = {
     querySelectorAll: function (root, id) {
         return root.querySelectorAll(id);
     },
-    remove: function (element) {
+    remove: function (module) {
+        const element = this.getModule(module).dom
         try {
             element.parentNode.removeChild(element)
         } catch (error) {

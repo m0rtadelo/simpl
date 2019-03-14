@@ -6,7 +6,7 @@ module.exports = {
     app: ["./src/main.js"]
   },
   output: {
-    path: path.resolve(__dirname, "build/"),
+    path: path.resolve(__dirname, "docs/"),
     filename: "simpl.js",
     publicPath: "/"
   },

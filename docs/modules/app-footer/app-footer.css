@@ -1,0 +1,11 @@
+app-footer {
+    text-align: center;
+    background-color: azure;
+    width: 100%;
+    font-family: monospace;
+    position: absolute;
+    height: 30px;
+    bottom: 0px;
+    color: cadetblue;
+    border-top: 1px solid cadetblue;
+}

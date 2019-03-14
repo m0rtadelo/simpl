@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
     "build": "webpack -p",
-    "test": "nyc mocha"
+    "test": "mocha",
+    "e2e": "protractor protractor.conf.js"
   },
   "author": "ricard.figuls@gmail.com",
   "license": "MIT",
@@ -17,6 +18,8 @@
     "babel-preset-env": "^1.6.1",
     "copy-webpack-plugin": "^4.0.1",
     "install": "^0.10.4",
+    "mocha": "^5.0.5",
+    "protractor": "^5.3.0",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },
