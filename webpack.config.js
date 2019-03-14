@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "docs/"),
     filename: "simpl.js",
-    publicPath: "docs/"
+    publicPath: "/simpl"
   },
   plugins: [
     new CopyWebpackPlugin([
