@@ -130,15 +130,15 @@ const simpl = {
         log.info(`<${moduleName}> HTML, CSS and JS request...`)
         let Module = {}
         try {
-            Module.html = (await axios.get(`../modules/${moduleName}/${moduleName}.html`)).data
+            Module.html = (await axios.get(`./modules/${moduleName}/${moduleName}.html`)).data
             log.info(`<${moduleName}> HTML loaded`)
-            Module.css = (await axios.get(`../modules/${moduleName}/${moduleName}.css`)).data
+            Module.css = (await axios.get(`./modules/${moduleName}/${moduleName}.css`)).data
             log.info(`<${moduleName}> CSS loaded`)
         } catch (error) {
             //log.error(error)
         }
         try {
-            Module.factory = await System.import(`../modules/${moduleName}/${moduleName}.js`)
+            Module.factory = await System.import(`./modules/${moduleName}/${moduleName}.js`)
             log.info(`<${moduleName}> JS loaded`)
         } catch (error) {
             log.error(error)
