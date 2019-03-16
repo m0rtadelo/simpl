@@ -6,14 +6,14 @@ module.exports = {
     app: ["./src/main.js"]
   },
   output: {
-    path: path.resolve(__dirname, "docs/"),
+    path: path.resolve(__dirname, "docs/lib/"),
     filename: "simpl.js",
-    publicPath: "simpl/"
+    publicPath: "lib/"
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/modules', to: 'modules' }
-      , { from: 'src/index.html' }
+      { from: 'src/modules', to: '../modules' }
+      , { from: 'src/index.html', to: '../index.html' }
     ])
   ]
   ,  module: {

@@ -1,1 +1,0 @@
-webpackJsonp([2],{364:function(n,o,t){"use strict";function i(){this.onLoad=function(){simpl.log.info(this.Module.type+"("+this.Module.id+") loaded.")},this.events=[{event:"load",action:this.onLoad}]}n.exports=function(){return new i}}});
