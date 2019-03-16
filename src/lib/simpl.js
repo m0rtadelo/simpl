@@ -158,12 +158,18 @@ const library = {
             Modules.available = availableModules
             log.info(`${availableModules} available, iterating DOM and injecting modules...`)
             await simpl.iterateHTML(document.querySelectorAll(Modules.list()))
+            window.simpl = this.simpl;
             ux.enable()
+            return true
         } else {
             log.warn("You must pass an argument with available Modules. Example: simpl.init(['app-tasklist','app-main'])")
+            return false
         }
         log.info("init finished")
-        console.log(Modules)
-    }, simpl: moduleHelper 
+        // console.log(Modules)
+    }, 
+    simpl: moduleHelper 
 }
 module.exports = library
+console.log("[SIMPL] window bind")
+window.simpl = library;
