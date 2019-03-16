@@ -1,0 +1,31 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>Test</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+    <script src="../../node_modules/mocha/mocha.js"></script>
+    <script src="../../node_modules/chai/chai.js"></script>
+    <script src="../../docs/lib/simpl.js"></script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script>
+      expect = chai.expect;
+      describe("Tests", async function() {
+        it("should load correcly", async function() {
+          expect(document).to.not.equal(undefined);
+        });
+        it("should have 'simpl' in window", async function() {
+           expect(window.simpl).to.not.equal(undefined);
+         });
+         it("return false when init without modules declaration", async function() {
+           const result = await window.simpl.init();
+           expect(result).to.equal(false);
+         });
+      });
+
+      mocha.run();
+    </script>
+  </body>
+</html>
