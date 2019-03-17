@@ -75,7 +75,7 @@ const simpl = {
             log.info(`Loading module ${moduleName}...`)
             Module = await this.requestModule(moduleName)
         } else {
-            log.info(`Loading module ${moduleName} (from caché)...`)
+            log.info(`Loading module ${moduleName} (cache)...`)
             Module.factory = cModule.factory
             Module.html = cModule.html
             Module.css = cModule.css
@@ -160,13 +160,12 @@ const library = {
             await simpl.iterateHTML(document.querySelectorAll(Modules.list()))
             window.simpl = this.simpl;
             ux.enable()
+            log.info("init finished")
             return true
         } else {
-            log.warn("You must pass an argument with available Modules. Example: simpl.init(['app-tasklist','app-main'])")
+            log.warn("Unable to init. You must pass an argument with available Modules. Example: simpl.init(['app-tasklist','app-main'])")
             return false
         }
-        log.info("init finished")
-        // console.log(Modules)
     }, 
     simpl: moduleHelper 
 }
